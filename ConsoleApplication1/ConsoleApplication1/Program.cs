@@ -12,25 +12,22 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            const string myName = "benjamin";
-            const string niceName = "andrea";
-            const string sillyName = "ploppy";
-            string name;
-            WriteLine("What is your name?");
-            name = ReadLine();
-            switch (name.ToLower())
+            double balance, interestRate, targetBalance;
+            WriteLine("What is your current balance?");
+            balance = ToDouble(ReadLine());
+            WriteLine("What is your current annual interest rate (in %)?");
+            interestRate = 1 + ToDouble(ReadLine()) / 100.0;
+            WriteLine("What balance would you like to have?");
+            targetBalance = ToDouble(ReadLine());
+            int totalYears = 0;
+            do
             {
-                case myName:
-                    WriteLine("You have the same name as me!");
-                    break;
-                case niceName:
-                    WriteLine("My, what a nice name you have!");
-                    break;
-                case sillyName:
-                    WriteLine("That's a very silly name.");
-                    break;
+                balance *= interestRate;
+                ++totalYears;
             }
-            WriteLine($"Hello {name}!");
+            while (balance < targetBalance);
+            WriteLine($"In {totalYears} year{(totalYears == 1 ? "" : "s")} you'll have a balance of {balance}.");
+            ReadKey();
         }
     }
 }
