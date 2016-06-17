@@ -12,22 +12,25 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            string comparison;
-            WriteLine("Enter a number:");
-            double var1 = ToDouble(ReadLine());
-            WriteLine("Enter another number:");
-            double var2 = ToDouble(ReadLine());
-            if (var1 < var2)
-                comparison = "less than";
-            else
+            const string myName = "benjamin";
+            const string niceName = "andrea";
+            const string sillyName = "ploppy";
+            string name;
+            WriteLine("What is your name?");
+            name = ReadLine();
+            switch (name.ToLower())
             {
-                if (var1 == var2)
-                    comparison = "equal to";
-                else
-                    comparison = "greater than";
+                case myName:
+                    WriteLine("You have the same name as me!");
+                    break;
+                case niceName:
+                    WriteLine("My, what a nice name you have!");
+                    break;
+                case sillyName:
+                    WriteLine("That's a very silly name.");
+                    break;
             }
-            WriteLine($"The first number is { comparison} the second number.");
-            WriteLine("The first number is {0} the second number.", comparison);
+            WriteLine($"Hello {name}!");
         }
     }
 }
