@@ -12,13 +12,22 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            WriteLine("Enter an integer:");
-            int myInt = ToInt32(ReadLine());
-            bool isLessThan10 = myInt < 10;
-            bool isBetween0And5 = (0 <= myInt) && (myInt <= 5);
-            WriteLine($"Integer less than 10? {isLessThan10}");
-            WriteLine($"Integer between 0 and 5? {isBetween0And5}");
-            WriteLine($"Exactly one of the above is true? { isLessThan10 ^ isBetween0And5}");
+            string comparison;
+            WriteLine("Enter a number:");
+            double var1 = ToDouble(ReadLine());
+            WriteLine("Enter another number:");
+            double var2 = ToDouble(ReadLine());
+            if (var1 < var2)
+                comparison = "less than";
+            else
+            {
+                if (var1 == var2)
+                    comparison = "equal to";
+                else
+                    comparison = "greater than";
+            }
+            WriteLine($"The first number is { comparison} the second number.");
+            WriteLine("The first number is {0} the second number.", comparison);
         }
     }
 }
