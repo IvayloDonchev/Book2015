@@ -46,9 +46,15 @@ namespace ConsoleApplication1
             size = myIntArray.Length; // По същество същото
             for (int i = 0; i < size; ++i)
                 myIntArray[i] = (i + 1) * 10;
-            for (int i = 0; i < size; ++i)
-                Write($"{myIntArray[i]} ");
+            foreach(int i in myIntArray)
+                Write($"{i} ");
             WriteLine();
+
+            double[,] hillHeight = new double[3, 4];
+            int[][] jaggedIntArray;
+            jaggedIntArray = new int[2][];
+            jaggedIntArray[0] = new int[3];
+            jaggedIntArray[1] = new int[4];
 
 
             //try
@@ -60,7 +66,7 @@ namespace ConsoleApplication1
             //{
             //    WriteLine(e.Message);
             //}
-            
+
 
             ReadKey();
         }
