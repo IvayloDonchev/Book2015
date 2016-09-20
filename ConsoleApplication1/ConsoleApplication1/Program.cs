@@ -20,8 +20,34 @@ namespace ConsoleApplication1
         public orientation direction;
         public double distance;
     }
+
     class Program
     {
+        static void Write()
+        {
+            WriteLine("Hello form function");
+        }
+        static double Multiply(double myVal1, double myVal2) => myVal1 * myVal2;
+        static int MaxValue(int[] intArray)
+        {
+            int maxVal = intArray[0];
+            for (int i = 1; i < intArray.Length; i++)
+            {
+                if (intArray[i] > maxVal)
+                    maxVal = intArray[i];
+            }
+            return maxVal;
+        }
+
+        static int SumVals(params int[] vals)
+        {
+            int sum = 0;
+            foreach (int val in vals)
+            {
+                sum += val;
+            }
+            return sum;
+        }
         static void Main(string[] args)
         {
             //    route myRoute;
@@ -80,9 +106,18 @@ namespace ConsoleApplication1
                 WriteLine($"{word}");
             }
             for (int i = myString.Length-1; i >= 0; --i)
-                Write(myString[i]);
+                Console.Write(myString[i]);
             WriteLine();       
             ReadKey();
+            Program.Write();
+            WriteLine(Multiply(3.5, 2));
+
+            int[] myArray = { 1, 8, 3, 6, 2, 5, 9, 3, 0, 2 };
+            int maxVal = MaxValue(myArray);
+            WriteLine($"The maximum value in myArray is {maxVal}");
+
+            int sum = SumVals(1, 5, 2, 9, 8);
+            WriteLine($"Summed Values = {sum}");
         }
     }
 }
