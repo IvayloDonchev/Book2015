@@ -47,7 +47,8 @@ namespace BegVCSharp_20_8_SelectDistinctQuery
                 new Customer { ID="S", City="Bogotá", Country="Colombia", Region="South America", Sales=1001 },
                 new Customer { ID="T", City="Lima", Country="Peru", Region="South America", Sales=2002 }
             };
-            var queryResults = customers.Select(c => c.Region).Distinct();
+            var queryResults = from c in customers orderby c.Region, c.Country, c.City
+                               select new { c.ID, c.Region, c.Country, c.City };
             // var queryResults = (from c in customers select c.Region).Distinct();
             foreach (var item in queryResults)
             {
