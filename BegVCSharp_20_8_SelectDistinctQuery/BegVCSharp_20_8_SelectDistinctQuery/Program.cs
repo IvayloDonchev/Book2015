@@ -47,9 +47,35 @@ namespace BegVCSharp_20_8_SelectDistinctQuery
                 new Customer { ID="S", City="Bogotá", Country="Colombia", Region="South America", Sales=1001 },
                 new Customer { ID="T", City="Lima", Country="Peru", Region="South America", Sales=2002 }
             };
-            var queryResults = from c in customers orderby c.Region, c.Country, c.City
-                               select new { c.ID, c.Region, c.Country, c.City };
-            // var queryResults = (from c in customers select c.Region).Distinct();
+            //var queryResults =
+            //    from c in customers
+            //    group c by c.Region into cg
+            //    select new { TotalSales = cg.Sum(c => c.Sales), Region = cg.Key }
+            //    ;
+
+            //    var orderedResults =
+            //        from cg in queryResults
+            //        orderby cg.TotalSales descending
+            //        select cg
+            //    ;
+
+            //Console.WriteLine("Total\t: By\nSales\t: Region\n-----\t ------");
+            //foreach (var item in orderedResults)
+            //{
+            //    Console.WriteLine($"{item.TotalSales}\t: {item.Region}");
+            //}
+
+            var queryResults =
+                from c in customers
+                join o in orders on c.ID equals o.ID
+                select new
+                {
+                     c.ID,
+                     c.City,
+                     SalesBefore = c.Sales,
+                     NewOrder = o.Amount,
+                     SalesAfter = c.Sales + o.Amount
+                };
             foreach (var item in queryResults)
             {
                 Console.WriteLine(item);
