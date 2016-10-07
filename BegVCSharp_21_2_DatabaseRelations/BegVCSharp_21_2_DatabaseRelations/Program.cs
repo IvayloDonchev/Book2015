@@ -34,6 +34,7 @@ namespace BegVCSharp_21_2_DatabaseRelations
     }
     public class BookContext : DbContext
     {
+        public BookContext() : base("BooksDatabase") { }
         public DbSet<Book> Books { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Stock> Stocks { get; set; }
