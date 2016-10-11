@@ -103,7 +103,15 @@ namespace BegVCSharp_21_2_DatabaseRelations
                         WriteLine($"-- Copies on Order: {stock.OnOrder}");
                     }
                 }
-                WriteLine("Press a key to exit...");
+                WriteLine("\n\nPress a key to exit...");
+                string[] names = { "Alonso", "Zheng", "Smith", "Jones", "Smythe", "Small", "Ruiz", "Hsieh", "Jorgenson", "Ilyich", "Singh", "Samba", "Fatimah" };
+                var queryResults = names.Where(n => n.StartsWith("S")).Distinct();
+                WriteLine("Names beginning with S:");
+                foreach (var item in queryResults)
+                {
+                    WriteLine(item);
+                }
+                Write("Program finished, press Enter/Return to continue:");
                 ReadKey();
             }
         }
