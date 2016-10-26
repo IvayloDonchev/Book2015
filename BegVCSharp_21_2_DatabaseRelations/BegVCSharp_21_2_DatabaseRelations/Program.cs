@@ -13,6 +13,7 @@ namespace BegVCSharp_21_2_DatabaseRelations
     {
         public string Title { get; set; }
         public string Author { get; set; }
+        public int Year { get; set; }
         [Key]
         public int Code { get; set; }
     }
@@ -48,13 +49,15 @@ namespace BegVCSharp_21_2_DatabaseRelations
                 Book book1 = new Book
                 {
                     Title = "Beginning Visual C# 2015",
-                    Author = "Perkins, Reid, and Hammer"
+                    Author = "Perkins, Reid, and Hammer",
+                    Year = 2015
                 };
                 db.Books.Add(book1);
                 Book book2 = new Book
                 {
                     Title = "Beginning XML",
-                    Author = "Fawcett, Quin, and Ayers"
+                    Author = "Fawcett, Quin, and Ayers",
+                    Year = 2013
                 };
                 db.Books.Add(book2);
                 var store1 = new Store
@@ -100,7 +103,15 @@ namespace BegVCSharp_21_2_DatabaseRelations
                         WriteLine($"-- Copies on Order: {stock.OnOrder}");
                     }
                 }
-                WriteLine("Press a key to exit...");
+                WriteLine("\n\nPress a key to exit...");
+                string[] names = { "Alonso", "Zheng", "Smith", "Jones", "Smythe", "Small", "Ruiz", "Hsieh", "Jorgenson", "Ilyich", "Singh", "Samba", "Fatimah" };
+                var queryResults = names.Where(n => n.StartsWith("S")).Distinct();
+                WriteLine("Names beginning with S:");
+                foreach (var item in queryResults)
+                {
+                    WriteLine(item);
+                }
+                Write("Program finished, press Enter/Return to continue:");
                 ReadKey();
             }
         }
