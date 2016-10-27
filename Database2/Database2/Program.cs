@@ -14,14 +14,15 @@ namespace Database2
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string CompanyName { get; set; }
+        public virtual string CompanyName { get; set; }
         [Key] public int CustomerID { get; set; }
     }
     public class Address
     {
         public string City { get; set; }
         public string Country { get; set; }
-        [Key] public string CompanyName { get; set; }
+        public virtual string CompanyName { get; set; }
+        [Key] public int AddressID { get; set; }
     }
     public class CustomerContext : DbContext
     {
@@ -46,11 +47,23 @@ namespace Database2
                 
                 db.SaveChanges();
 
-                var query = from c in db.Customers
-                            orderby c.FirstName, c.LastName
-                            select new { c.FirstName, c.LastName };
+                var query = db.Customers.Select(c => c.CompanyName).Distinct();
+                //var query = from c in db.Customers
+                //            orderby c.FirstName, c.LastName
+                //            select c;
                 foreach(var x in query )
-                    WriteLine($"{x.FirstName} {x.LastName}");
+                {
+
+                    var findAddress = from a in db.Addresses
+                                      where a.CompanyName == x
+                                      select a;
+                    foreach (var a in findAddress)
+                        WriteLine($"Company {x}, Address: {a.City}, {a.Country}");
+
+                }
+                   
+                WriteLine("Press any key!");
+                ReadKey();
             }
         }
     }
