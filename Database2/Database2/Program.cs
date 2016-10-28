@@ -52,13 +52,11 @@ namespace Database2
                             on c.CompanyName equals adr.CompanyName into g
                             from d in g
                             select new { d.CompanyName, d.City, d.Country };
-
-                foreach(var x in query )
+                var refined_results = query.Distinct(); //премахва повтарящите се записи
+                foreach (var x in refined_results )
                 {
-                    WriteLine($"Company {x.CompanyName}, Address: {x.City}, {x.Country}");
-
+                    WriteLine($"Company: {x.CompanyName}, Address: {x.City}, {x.Country}");
                 }
-                   
                 WriteLine("Press any key!");
                 ReadKey();
             }
