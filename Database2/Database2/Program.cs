@@ -47,18 +47,15 @@ namespace Database2
                 
                 db.SaveChanges();
 
-                var query = db.Customers.Select(c => c.CompanyName).Distinct();
-                //var query = from c in db.Customers
-                //            orderby c.FirstName, c.LastName
-                //            select c;
+                var query = from c in db.Customers orderby c.FirstName, c.LastName
+                            join adr in db.Addresses
+                            on c.CompanyName equals adr.CompanyName into g
+                            from d in g
+                            select new { d.CompanyName, d.City, d.Country };
+
                 foreach(var x in query )
                 {
-
-                    var findAddress = from a in db.Addresses
-                                      where a.CompanyName == x
-                                      select a;
-                    foreach (var a in findAddress)
-                        WriteLine($"Company {x}, Address: {a.City}, {a.Country}");
+                    WriteLine($"Company {x.CompanyName}, Address: {x.City}, {x.Country}");
 
                 }
                    
