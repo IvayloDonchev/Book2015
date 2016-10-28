@@ -27,7 +27,7 @@ namespace Database2
     }
     public class CustomerContext : DbContext
     {
-        public CustomerContext() : base("Data Source = 192.168.1.101, 49170;" + 
+        public CustomerContext() : base("Data Source = SONY, 49170;" + 
                                         "Initial Catalog = Customers List;" +
                                         "Integrated Security = True") { }
         public DbSet<Customer> Customers { get; set; }
