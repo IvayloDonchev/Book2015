@@ -39,16 +39,17 @@ namespace Database2
         {
             using (var db = new CustomerContext())
             {
-                Customer customer1 = new Customer { FirstName = "Kim", LastName = "Abercrombie", CompanyName = "Alpine Ski House" };
-                db.Customers.Add(customer1);
-                db.Customers.Add(new Customer { FirstName = "Jeff", LastName = "Hay", CompanyName = "Coho Winery"});
-                db.Customers.Add(new Customer { FirstName = "Charlie", LastName = "Herb", CompanyName = "Alpine Ski House" });
+                //Customer customer1 = new Customer { FirstName = "Kim", LastName = "Abercrombie", CompanyName = "Alpine Ski House" };
+                //db.Customers.Add(customer1);
+                //db.Customers.Add(new Customer { FirstName = "Jeff", LastName = "Hay", CompanyName = "Coho Winery"});
+                //db.Customers.Add(new Customer { FirstName = "Charlie", LastName = "Herb", CompanyName = "Alpine Ski House" });
+                //db.Customers.Add(new Customer { FirstName = "Ivaylo", LastName = "Donchev", CompanyName = "Trey Research" });
 
-                db.Addresses.Add(new Address { CompanyName = "Alpine Ski House", City = "Berne", Country = "Switzerland" });
-                db.Addresses.Add(new Address { CompanyName = "Coho Winery", City = "San Francisco", Country = "United States" });
-                db.Addresses.Add(new Address { CompanyName = "Trey Research", City = "New York", Country = "United States" });
+                //db.Addresses.Add(new Address { CompanyName = "Alpine Ski House", City = "Berne", Country = "Switzerland" });
+                //db.Addresses.Add(new Address { CompanyName = "Coho Winery", City = "San Francisco", Country = "United States" });
+                //db.Addresses.Add(new Address { CompanyName = "Trey Research", City = "New York", Country = "United States" });
                 
-                db.SaveChanges();
+                //db.SaveChanges();
 
                 var query = from c in db.Customers orderby c.FirstName, c.LastName
                             join adr in db.Addresses
