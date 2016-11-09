@@ -49,6 +49,10 @@ namespace ConsoleApplication1
             int maxIndex;
             WriteLine($"The maximum value in myArray is {MaxValue(myArray, out maxIndex)}");
             WriteLine($"The first occurrence of this value is at element { maxIndex + 1}");
+            WriteLine(@"List of items:
+        1. Item 1
+        2. Item 2
+        3. Item 3");
 
         }
     }
