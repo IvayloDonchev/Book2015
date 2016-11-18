@@ -45,15 +45,28 @@ namespace ConsoleApplication1
 
         static void Main(string[] args)
         {
-            int[] myArray = { 1, 8, 3, 6, 2, 5, 9, 3, 0, 2 };
-            int maxIndex;
-            WriteLine($"The maximum value in myArray is {MaxValue(myArray, out maxIndex)}");
-            WriteLine($"The first occurrence of this value is at element { maxIndex + 1}");
-            WriteLine(@"List of items:
-        1. Item 1
-        2. Item 2
-        3. Item 3");
+            //    int[] myArray = { 1, 8, 3, 6, 2, 5, 9, 3, 0, 2 };
+            //    int maxIndex;
+            //    WriteLine($"The maximum value in myArray is {MaxValue(myArray, out maxIndex)}");
+            //    WriteLine($"The first occurrence of this value is at element { maxIndex + 1}");
+            //    WriteLine(@"List of items:
+            //1. Item 1
+            //2. Item 2
+            //3. Item 3");
 
+            Console.Write(">> ");
+            int N = Convert.ToInt16(Console.ReadLine());
+            int[] mas = new int[N];
+            for (int i = 0; i < mas.Length; i++)
+            {
+                mas[i] = i + 1;
+            }
+            foreach (var x in mas)
+                Console.Write($"{x} ");
+            Console.WriteLine();
+            string[] names = { "Ivaylo", "Doroteya", "Victoria", "Petar"};
+            foreach (var n in names)
+                Console.WriteLine(n);
         }
     }
 }
