@@ -28,27 +28,33 @@ namespace ConsoleApplication1
             WriteLine("Hello form function");
         }
         static double Multiply(double myVal1, double myVal2) => myVal1 * myVal2;
-        static int MaxValue(int[] intArray, out int maxIndex)
+        static ref int MaxValue(int[] intArray)
         {
-            int maxVal = intArray[0];
-            maxIndex = 0;
-            for (int i = 1; i < intArray.Length; i++)
-            {
-                if (intArray[i] > maxVal)
-                {
-                    maxVal = intArray[i];
-                    maxIndex = i;
-                }
-            }
-            return maxVal;
-        }
 
+            int maxIndex = 0;
+            for (int i = 1; i < intArray.Length; i++)
+                if (intArray[i] > intArray[maxIndex])
+                    maxIndex = i;
+            return ref intArray[maxIndex];
+        }
         static void Main(string[] args)
         {
             int[] myArray = { 1, 8, 3, 6, 2, 5, 9, 3, 0, 2 };
-            int maxIndex;
-            WriteLine($"The maximum value in myArray is {MaxValue(myArray, out maxIndex)}");
-            WriteLine($"The first occurrence of this value is at element { maxIndex + 1}");
+            ref int maximum = ref MaxValue(myArray);
+            Console.WriteLine($"The maximum is {MaxValue(myArray)}");
+            maximum = 100;
+            foreach (var e in myArray)
+                Console.Write($"{e} ");
+            Console.WriteLine();
+
+            MaxValue(myArray) = 200;
+            foreach (var e in myArray)
+                Console.Write($"{e} ");
+            Console.WriteLine();
+
+            Console.ReadKey();
+
+
 
         }
     }
