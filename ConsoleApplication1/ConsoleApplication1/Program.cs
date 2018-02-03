@@ -52,7 +52,16 @@ namespace ConsoleApplication1
             return ref intArray[maxIndex];
         }
         static int Sum(in int a, in int b) => a + b;
-        
+
+        private static ref int Max(ref int x, ref int y)
+        {
+            if(x > y) return ref x;
+            else return ref y;
+        }
+
+ 
+
+
         static void Main(string[] args)
         {
             int[] myArray = { 1, 8, 3, 6, 2, 5, 9, 3, 0, 2 };
@@ -74,6 +83,7 @@ namespace ConsoleApplication1
 
 
             int x = 5, y = 6;
+            Max(ref x, ref y) = 10;
             const int z = 10;
             Console.WriteLine(Sum(x,y));    //извикване с променливи
             Console.WriteLine(Sum(1,2));    //извикване с числови литерали
