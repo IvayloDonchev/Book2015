@@ -88,6 +88,12 @@ namespace ConsoleApplication1
             Console.WriteLine(Sum(x,y));    //извикване с променливи
             Console.WriteLine(Sum(1,2));    //извикване с числови литерали
             Console.WriteLine(Sum(z, 2));   //извикване с константа и числов литерали
+
+            Circle c = new Circle(12.34);
+            Console.WriteLine(c);
+            WriteLine(c.Radius);
+
+
             Console.ReadKey();
 
 
