@@ -8,10 +8,18 @@ namespace ConsoleApplication1
 {
     public class Circle
     {
-        public Circle() : this(0.0) { }
-        public Circle(double d) => this.Radius = d;
-        public double Radius { get; private set;}
-        public override string ToString() => $"Circle with radius {Radius} and area {Area}";
-        public double Area => Math.PI * Radius * Radius;
+        public Circle() => radius = 0;
+        public Circle(int r) => radius = r;
+        //-----------------------------
+        private int radius;
+        public double Area() => Math.PI * radius * radius;
+        public void SetRadius(int r)
+        {
+            if (r > 0)
+                radius = r;
+            else
+                throw new ArgumentOutOfRangeException("Incorrect radius value");
+        }
     }
+
 }
